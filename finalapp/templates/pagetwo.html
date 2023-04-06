@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Two</title>
+    <link rel="stylesheet" href="/static/pagetwo.css">
+</head>
+<body>
+    <script>
+        function add()
+        {
+          var numOne, numTwo, numThree, sum;
+          numOne = parseInt(document.getElementById("cal_a").value);
+          numTwo = parseInt(document.getElementById("cal_b").value);
+          numThree = parseInt(document.getElementById("cal_c").value);
+          sum = numOne ** numTwo % numThree;
+          document.getElementById("answer").value = sum;
+        }
+
+    </script>
+
+    <div class="background">
+        <img src="" alt="">
+        <div class="back">
+            <img src="/static/images/homeback (2).png" alt="" class="glass">
+            <form class="key_form" action=""></form>
+             {% if data %}
+                <div class= "numb_a"> <h1 id="stynum">{{data.one_bob}}</h1></div>
+                <div class="numb_b" > <h1 id="stynum">{{ data.q}}</h1></div>
+                 {% endif %}
+                <!--<input class="numb_a">-->
+                <!--<input class="numb_b">-->
+
+                <button class="submit">
+                    <p class="button_text"><a class="log" href="{% url 'logout' %}">Logout</a></p>
+                </button>
+            </form>
+            <div class="cal">
+                    <img src="/static/images/calculator.png" alt="" class="cal_img">
+
+
+
+                    <input type="text" name="" id="cal_a" >
+                    <input type="text" name="" id="cal_b" >
+                    <input type="text" name="" id="cal_c" >
+                    <button class="cal_d" onclick="add()">Solve</button>
+                    <input id="answer">
+            </div>
+            <div id="cal_s">
+                <div id="ciphered_mnemonic">
+                    {% if new_mnemo %}
+                    {% for mnems in  new_mnemo %}
+                    {{mnems}}
+                    {% endfor %}
+
+                    {% else %}
+                    <p>you did not write a mnemonic<a href="{% url 'Home' %}">Click here </a> to  generate one</p>
+                    {% endif %}
+                     </div>
+                    <button id="submit_mnemonic" onclick="myFunction()">Send</button>
+                    </div>
+
+
+        </div>
+    </div>
+    <!--{% comment %} <p id="demo"></p> {% endcomment %}-->
+<script>
+    function myFunction() {
+      document.getElementById("submit_mnemonic").innerHTML = "Your message has been sucesfully sent";
+      alert('your message has been sucesfully sent');
+    }
+    </script>
+</body>
+</html>
